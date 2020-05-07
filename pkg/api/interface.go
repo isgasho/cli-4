@@ -64,6 +64,12 @@ type Interface interface {
 	UpdateS3(*fastly.UpdateS3Input) (*fastly.S3, error)
 	DeleteS3(*fastly.DeleteS3Input) error
 
+	CreateSumologic(*fastly.CreateSumologicInput) (*fastly.Sumologic, error)
+	ListSumologics(*fastly.ListSumologicsInput) ([]*fastly.Sumologic, error)
+	GetSumologic(*fastly.GetSumologicInput) (*fastly.Sumologic, error)
+	UpdateSumologic(*fastly.UpdateSumologicInput) (*fastly.Sumologic, error)
+	DeleteSumologic(*fastly.DeleteSumologicInput) error
+
 	GetUser(*fastly.GetUserInput) (*fastly.User, error)
 }
 

@@ -55,6 +55,12 @@ type API struct {
 	UpdateS3Fn func(*fastly.UpdateS3Input) (*fastly.S3, error)
 	DeleteS3Fn func(*fastly.DeleteS3Input) error
 
+	CreateSumologicFn func(*fastly.CreateSumologicInput) (*fastly.Sumologic, error)
+	ListSumologicsFn  func(*fastly.ListSumologicsInput) ([]*fastly.Sumologic, error)
+	GetSumologicFn    func(*fastly.GetSumologicInput) (*fastly.Sumologic, error)
+	UpdateSumologicFn func(*fastly.UpdateSumologicInput) (*fastly.Sumologic, error)
+	DeleteSumologicFn func(*fastly.DeleteSumologicInput) error
+
 	GetUserFn func(*fastly.GetUserInput) (*fastly.User, error)
 }
 
@@ -251,6 +257,31 @@ func (m API) UpdateS3(i *fastly.UpdateS3Input) (*fastly.S3, error) {
 // DeleteS3 implements Interface.
 func (m API) DeleteS3(i *fastly.DeleteS3Input) error {
 	return m.DeleteS3Fn(i)
+}
+
+// CreateSumologic implements Interface.
+func (m API) CreateSumologic(i *fastly.CreateSumologicInput) (*fastly.Sumologic, error) {
+	return m.CreateSumologicFn(i)
+}
+
+// ListSumologics implements Interface.
+func (m API) ListSumologics(i *fastly.ListSumologicsInput) ([]*fastly.Sumologic, error) {
+	return m.ListSumologicsFn(i)
+}
+
+// GetSumologic implements Interface.
+func (m API) GetSumologic(i *fastly.GetSumologicInput) (*fastly.Sumologic, error) {
+	return m.GetSumologicFn(i)
+}
+
+// UpdateSumologic implements Interface.
+func (m API) UpdateSumologic(i *fastly.UpdateSumologicInput) (*fastly.Sumologic, error) {
+	return m.UpdateSumologicFn(i)
+}
+
+// DeleteSumologic implements Interface.
+func (m API) DeleteSumologic(i *fastly.DeleteSumologicInput) error {
+	return m.DeleteSumologicFn(i)
 }
 
 // GetUser implements Interface.
