@@ -203,7 +203,10 @@ func (r Rust) Build(out io.Writer) error {
 
 	// Wait for the command to exit.
 	if err := cmd.Wait(); err != nil {
-		return fmt.Errorf("error during compilation process: %w", err)
+		return errors.RemediationError{
+			Inner:       fmt.Errorf("error during compilation process: %w", err),
+			Remediation: fmt.Sprintf("To learn more, run the command again with --verbose:\n\n\t$ %s\n", text.Bold("fastly compute build --verbose")),
+		}
 	}
 	if errStdout != nil {
 		return fmt.Errorf("error during compilation process: %w", errStdout)
